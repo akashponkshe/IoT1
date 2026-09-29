@@ -1,1 +1,70 @@
-sys
+Practical 1: LED Patterns
+
+Code:
+import RPi.GPIO as GPIO
+import time
+
+# Get user input
+numTimes = int(input("Enter total number of times to blink: "))
+speed = float(input("Enter length of each blink (seconds): "))
+
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BOARD) # Using physical pin numbers
+
+# Setup GPIO pins for output
+GPIO.setup(11, GPIO.OUT) # LED1
+GPIO.setup(13, GPIO.OUT) # LED2
+def Blink(numTimes, speed):
+
+for i in range(numTimes):
+print("Iteration", i + 1)
+
+GPIO.output(11, True) # LED1 ON
+GPIO.output(13, True) # LED2 ON
+time.sleep(speed)
+GPIO.output(11, False) # LED1 OFF
+GPIO.output(13, False) # LED2 OFF
+time.sleep(speed)
+Blink(numTimes, speed)
+GPIO.cleanup()
+print("Done")
+
+Practical 2: Camera
+1.sudo raspi-config
+2.sudo reboot
+3.libcamera-hello
+4.libcamera-still-o image.jpg (image)
+5.libcamera-vid- o video.h264- t 10000
+
+Practical 3: TelegramBot
+1. Install "Python Package Index"
+sudo apt-get install python-pip
+
+2.Install "telepot"
+sudo apt install python3-venv
+python3 -m venv myenv
+source myenv/bin/activate
+pip install telepot
+pip install RPi.GPIO
+
+3. clone git
+git clone https://github.com/salmanfarisvp/TelegramBot.git
+cd TelegramBot
+nano telegrambot.py
+bot = telepot.Bot('your_bot_token')
+python telegrambot.py
+
+Practical 6: 
+https://github.com/bhoomikapansare/7Segment.git
+
+Practical 8: Oscilloscope
+sudo raspi-config (enable i2c)
+
+pip install board --break-system-packages
+
+sudo pip install drawnow --break-system-packages
+
+sudo apt-get install -y i2c-tools python3-smbus
+
+python3 -m pip install --upgrade --no-cache-dir adafruit-blinka adafruit-circuitpython-busdevice
+adafruit-circuitpython-ads1x15 --break-system-packages
